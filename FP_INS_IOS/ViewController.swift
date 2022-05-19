@@ -10,7 +10,10 @@ import UIKit
 class ViewController: UIViewController {
     var floatingActionButton: UIButton!
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var locationCollectionView: UICollectionView!
+    var filteredLocations: [Location] = [Location]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +30,8 @@ class ViewController: UIViewController {
         self.floatingActionButton.addTarget(self, action: #selector(self.addDataFloatingActionButton(_:)), for: UIControl.Event.touchUpInside)
         // adding the floatingactionbutton as a subview in the view
         self.view.addSubview(self.floatingActionButton)
+        searchBar.delegate = self
+        self.definesPresentationContext = false
     }
 
     @objc func addDataFloatingActionButton (_ sender: UIButton) {
@@ -83,4 +88,8 @@ extension ViewController: UICollectionViewDelegate {
     }
 }
 
-
+extension ViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+    }
+}
