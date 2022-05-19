@@ -54,6 +54,14 @@ class ViewController: UIViewController {
             floatingActionButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
+    
+    func navigateToLocationScreen(){
+        performSegue(withIdentifier: "navigateToLocationScreen", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        _=segue.destination as! LocationScreenViewController
+    }
 }
 
 
@@ -80,6 +88,8 @@ extension ViewController: UICollectionViewDelegate {
         print(locations[indexPath.row].locationTitle)
         
         // todo: Open Individual Location Tab
+        
+        navigateToLocationScreen();
     }
 }
 
