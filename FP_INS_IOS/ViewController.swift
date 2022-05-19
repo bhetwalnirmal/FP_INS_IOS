@@ -10,8 +10,17 @@ import UIKit
 class ViewController: UIViewController {
     var floatingActionButton: UIButton!
     
+    @IBOutlet weak var locationCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // setting data source and delegate of location collection view
+        locationCollectionView.dataSource = self
+        locationCollectionView.delegate = self
+        
+        // setting viewlaylout of location collection view
+        locationCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        
         // initialize the floating action button
         self.floatingActionButton = UIButton(type: .custom)
         // setting up the target of the floating button
@@ -46,4 +55,32 @@ class ViewController: UIViewController {
         ])
     }
 }
+
+
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return locations.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCollectionViewCell", for: indexPath) as! LocationCollectionViewCell
+        cell.setup(with: locations[indexPath.row])
+        return cell
+    }
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 190, height: 300)
+    }
+}
+
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(locations[indexPath.row].locationTitle)
+        
+        // todo: Open Individual Location Tab
+    }
+}
+
 

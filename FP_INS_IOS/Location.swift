@@ -21,7 +21,13 @@ struct Location {
 }
 
 // todo: We need to add few locations
-let location: [Location] = [
+let locations: [Location] = [
+    Location(locationTitle: "Mt.Everest", locationLat: 27.9881, locationLong: 86.9250, locationDescription: "Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The China–Nepal border runs across its summit point. Its elevation of 8,848.86 m was most recently established in 2020 by the Chinese and Nepali authorities.", locationImages: ["everest.jpg"], locationVideo: ""),
+    
+    Location(locationTitle: "Mt.Everest", locationLat: 27.9881, locationLong: 86.9250, locationDescription: "Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The China–Nepal border runs across its summit point. Its elevation of 8,848.86 m was most recently established in 2020 by the Chinese and Nepali authorities.", locationImages: ["everest.jpg"], locationVideo: ""),
+    Location(locationTitle: "Mt.Everest", locationLat: 27.9881, locationLong: 86.9250, locationDescription: "Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The China–Nepal border runs across its summit point. Its elevation of 8,848.86 m was most recently established in 2020 by the Chinese and Nepali authorities.", locationImages: ["everest.jpg"], locationVideo: ""),
+    Location(locationTitle: "Mt.Everest", locationLat: 27.9881, locationLong: 86.9250, locationDescription: "Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The China–Nepal border runs across its summit point. Its elevation of 8,848.86 m was most recently established in 2020 by the Chinese and Nepali authorities.", locationImages: ["everest.jpg"], locationVideo: ""),
+    Location(locationTitle: "Mt.Everest", locationLat: 27.9881, locationLong: 86.9250, locationDescription: "Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The China–Nepal border runs across its summit point. Its elevation of 8,848.86 m was most recently established in 2020 by the Chinese and Nepali authorities.", locationImages: ["everest.jpg"], locationVideo: ""),
     Location(locationTitle: "Mt.Everest", locationLat: 27.9881, locationLong: 86.9250, locationDescription: "Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The China–Nepal border runs across its summit point. Its elevation of 8,848.86 m was most recently established in 2020 by the Chinese and Nepali authorities.", locationImages: ["everest.jpg"], locationVideo: ""),
 ]
 
