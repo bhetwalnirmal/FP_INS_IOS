@@ -10,14 +10,17 @@ import UIKit
 class ViewController: UIViewController {
     var floatingActionButton: UIButton!
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var locationCollectionView: UICollectionView!
+    var filteredLocations: [Location] = [Location]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // setting data source and delegate of location collection view
         locationCollectionView.dataSource = self
         locationCollectionView.delegate = self
-        
+        filteredLocations = locations
         // setting viewlaylout of location collection view
         locationCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
         
@@ -27,9 +30,12 @@ class ViewController: UIViewController {
         self.floatingActionButton.addTarget(self, action: #selector(self.addDataFloatingActionButton(_:)), for: UIControl.Event.touchUpInside)
         // adding the floatingactionbutton as a subview in the view
         self.view.addSubview(self.floatingActionButton)
+        searchBar.delegate = self
+        self.definesPresentationContext = false
     }
 
     @objc func addDataFloatingActionButton (_ sender: UIButton) {
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -67,12 +73,12 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return locations.count
+        return filteredLocations.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCollectionViewCell", for: indexPath) as! LocationCollectionViewCell
-        cell.setup(with: locations[indexPath.row])
+        cell.setup(with: filteredLocations[indexPath.row])
         return cell
     }
 }
@@ -93,4 +99,16 @@ extension ViewController: UICollectionViewDelegate {
     }
 }
 
-
+extension ViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text != "" {
+            filteredLocations = locations.filter {
+                return $0.getTitle().range(of: "\(searchText).*", options: [.regularExpression, .caseInsensitive]) != nil
+            }
+        } else {
+            filteredLocations = locations
+        }
+        
+        self.locationCollectionView.reloadData()
+    }
+}
