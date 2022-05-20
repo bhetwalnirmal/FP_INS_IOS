@@ -75,6 +75,7 @@
                     <connections>
                         <outlet property="locationCollectionView" destination="MJ4-Bj-Vga" id="b6e-aW-awU"/>
                         <segue destination="Sm5-CU-akx" kind="showDetail" id="phM-Di-p9n"/>
+                        <outlet property="searchBar" destination="oQX-vr-3VV" id="Pzy-sx-0ns"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
