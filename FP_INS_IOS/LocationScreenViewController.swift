@@ -9,10 +9,16 @@ import UIKit
 
 class LocationScreenViewController: UIViewController {
 
+    @IBOutlet weak var locationTitle: UILabel!
+    
+    var location:Location?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+//        locationTitle.text = locations[locationIndex!].locationTitle
+//        print(location!.locationTitle)
     }
     
 

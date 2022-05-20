@@ -124,6 +124,9 @@
                         <viewLayoutGuide key="safeArea" id="FPw-s2-y7A"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="locationTitle" destination="FHR-6B-M4E" id="8L7-RX-R89"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LWm-jJ-Nnq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
