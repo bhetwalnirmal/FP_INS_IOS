@@ -10,8 +10,13 @@ import UIKit
 class LocationScreenViewController: UIViewController {
     var locationData: Location? = nil
 
+    @IBOutlet weak var locationTitle: UILabel!
+    
+    var location:Location?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("location is",location)
     }
     
     
