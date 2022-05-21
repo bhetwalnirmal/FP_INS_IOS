@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var locationCollectionView: UICollectionView!
     var filteredLocations: [Location] = [Location]()
+    var currentSelectedLocation: Location? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +68,11 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         _=segue.destination as! LocationScreenViewController
+        guard let secondViewController = segue.destination as? LocationScreenViewController else { return }
+               // Pass Data to Second View Controller
+        secondViewController.locationData = currentSelectedLocation
+    
+        
     }
 }
 
@@ -92,7 +98,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(locations[indexPath.row].locationTitle)
-        
+        currentSelectedLocation = locations[indexPath.row]
         // todo: Open Individual Location Tab
         
         navigateToLocationScreen();
