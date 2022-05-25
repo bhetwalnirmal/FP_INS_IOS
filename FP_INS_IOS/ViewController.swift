@@ -11,6 +11,8 @@ class ViewController: UIViewController {
     var floatingActionButton: UIButton!
     
     @IBOutlet weak var searchBar: UISearchBar!
+    var clickedLocation:Location?
+    
     @IBOutlet weak var locationCollectionView: UICollectionView!
     var filteredLocations: [Location] = [Location]()
     
@@ -60,6 +62,15 @@ class ViewController: UIViewController {
             floatingActionButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
+    
+    func navigateToLocationScreen(){
+        performSegue(withIdentifier: "navigateToLocationScreen", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let locationScreenViewController = segue.destination as! LocationScreenViewController
+        locationScreenViewController.location = self.clickedLocation
+    }
 }
 
 
@@ -83,9 +94,10 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(locations[indexPath.row].locationTitle)
-        
-        // todo: Open Individual Location Tab
+        // setting clicked location
+        clickedLocation = locations[indexPath.row]
+        print("clicked location update: ", clickedLocation)
+        navigateToLocationScreen();
     }
 }
 
