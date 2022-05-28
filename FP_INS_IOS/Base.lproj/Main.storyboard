@@ -14,7 +14,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FP_INS_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="oQX-vr-3VV">
@@ -104,7 +104,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system" title="Home"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="OkU-q8-FQs"/>
+                                    <action selector="goToHomeScreen:" destination="Asq-2f-PEu" eventType="touchUpInside" id="zZo-rU-r0m"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fAs-Fb-bne">
@@ -187,9 +187,11 @@
                         <outlet property="locationMapView" destination="w2O-db-m1F" id="pDs-SA-AHe"/>
                         <outlet property="locationTitle" destination="FHR-6B-M4E" id="8L7-RX-R89"/>
                         <outlet property="pageSliderCollectionView" destination="fAs-Fb-bne" id="uGA-lg-qhA"/>
+                        <segue destination="xxM-Va-Rg4" kind="unwind" identifier="unwindToHome" unwindAction="unwind:" id="Ovh-Wj-mAs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LWm-jJ-Nnq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="xxM-Va-Rg4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="716.92307692307691" y="67.535545023696685"/>
         </scene>

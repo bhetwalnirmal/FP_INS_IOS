@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var locationCollectionView: UICollectionView!
     var filteredLocations: [Location] = [Location]()
     
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

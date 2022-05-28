@@ -96,6 +96,11 @@ class LocationScreenViewController: UIViewController, CLLocationManagerDelegate 
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func goToHomeScreen(_ sender: Any) {
+        performSegue(withIdentifier: "unwindToHome", sender: self)
+    }
+    
 
 }
 
