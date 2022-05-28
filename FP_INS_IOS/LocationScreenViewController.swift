@@ -13,28 +13,51 @@ class LocationScreenViewController: UIViewController, CLLocationManagerDelegate 
 
     @IBOutlet weak var locationTitle: UILabel!
     
-    @IBOutlet weak var locationImage: UIImageView!
-    
     @IBOutlet weak var locationDesc: UITextView!
     
     @IBOutlet weak var locationMapView: MKMapView!
     
+    @IBOutlet weak var pageSliderCollectionView: UICollectionView!
+    
+    @IBOutlet weak var locationImagesPageController: UIPageControl!
+    
+    
     var location:Location?
+    
+    var timer:Timer?
+    
+    var currentCellIndex = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        pageSliderCollectionView.dataSource = self
+        pageSliderCollectionView.delegate = self
+        
         locationTitle.text = location?.locationTitle
-        locationImage.image = UIImage(named: (location?.locationImages[0])!)
+//        locationImage.image = UIImage(named: (location?.locationImages[0])!)
         locationDesc.text = location?.locationDescription
         
         displayLocation(latitude: location!.locationLat, longitude: location!.locationLong, title: location!.locationTitle, subtitle: "Here")
         
+        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(slideToNextImage), userInfo: nil, repeats: true)
+        
+        locationImagesPageController.numberOfPages = (location?.locationImages.count)!;
         
         
     }
     
-  
+        @objc func slideToNextImage(){
+            if currentCellIndex < (location?.locationImages.count)!-1{
+                currentCellIndex = currentCellIndex + 1;
+            }else{
+                currentCellIndex = 0;
+            }
+            
+            locationImagesPageController.currentPage = currentCellIndex;
+            
+            pageSliderCollectionView.scrollToItem(at: IndexPath(item: currentCellIndex, section: 0), at: .right, animated: true)
+        }
     
     //MARK: - display user location method
         func displayLocation(latitude: CLLocationDegrees,
@@ -74,4 +97,24 @@ class LocationScreenViewController: UIViewController, CLLocationManagerDelegate 
     }
     */
 
+}
+
+
+extension LocationScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return (location?.locationImages.count)!;
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = pageSliderCollectionView.dequeueReusableCell(withReuseIdentifier: "pageScrollCell", for: indexPath) as! PageSliderCollectionViewCell
+        cell.locationImage.image = UIImage(named: (location?.locationImages[indexPath.row])!)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: pageSliderCollectionView.frame.width, height: pageSliderCollectionView.frame.height)
+    }
+    
+    
+    
 }

@@ -96,7 +96,6 @@ extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // setting clicked location
         clickedLocation = locations[indexPath.row]
-        print("clicked location update: ", clickedLocation)
         navigateToLocationScreen();
     }
 }
