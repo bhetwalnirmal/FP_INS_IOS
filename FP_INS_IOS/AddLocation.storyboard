@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Location Add View Controller-->
         <scene sceneID="Vw3-Ey-PLf">
             <objects>
-                <viewController id="9Yd-n0-qFd" sceneMemberID="viewController">
+                <viewController id="9Yd-n0-qFd" customClass="LocationAddViewController" customModule="FP_INS_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="McB-qQ-ccq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,6 +73,9 @@
                                 <state key="normal" title="Select Image">
                                     <color key="titleColor" name="AccentColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnAddImage:" destination="9Yd-n0-qFd" eventType="touchUpInside" id="30n-Qh-0RN"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAR-ba-DPU">
                                 <rect key="frame" x="16" y="387" width="100" height="39"/>
@@ -88,6 +91,9 @@
                                 <state key="normal" title="Select Video">
                                     <color key="titleColor" name="AccentColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnAddVideo:" destination="9Yd-n0-qFd" eventType="touchUpInside" id="CLZ-0U-Q41"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gay-M3-7WM">
                                 <rect key="frame" x="128" y="483" width="134" height="53"/>
@@ -95,11 +101,19 @@
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Save Location"/>
+                                <connections>
+                                    <action selector="btnSave:" destination="9Yd-n0-qFd" eventType="touchUpInside" id="avb-a9-Xav"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WRc-TW-3n7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="txtCoOrdinate" destination="ega-pH-1W4" id="tzZ-Wl-P5W"/>
+                        <outlet property="txtDescription" destination="llh-fy-zm3" id="uV5-oo-tK8"/>
+                        <outlet property="txtLocationName" destination="JJ2-dZ-Xjd" id="dFH-Ub-KQZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cIi-mD-Imz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
