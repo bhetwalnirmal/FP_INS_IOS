@@ -82,17 +82,6 @@ class ViewController: UIViewController {
         self.definesPresentationContext = false
     }
    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("*********** Running view will appear")
-        let locationData = coreDataController.getAllLocations()
-        locations = convertToLocation(nsManagedObject: locationData)
-        filteredLocations = locations
-        print(filteredLocations.count)
-        // setting data source and delegate of location collection view
-        locationCollectionView.reloadData()
-    }
-   
 
     @objc func addDataFloatingActionButton (_ sender: UIButton) {
         performSegue(withIdentifier: "navigateToLocationAdd", sender: self)
