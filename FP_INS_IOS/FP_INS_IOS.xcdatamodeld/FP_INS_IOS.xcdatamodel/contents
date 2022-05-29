@@ -6,7 +6,7 @@
         <attribute name="locationLat" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="locationLong" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="locationTitle" optional="YES" attributeType="String"/>
-        <attribute name="locationVideo" optional="YES" attributeType="Binary"/>
+        <attribute name="locationVideo" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="DataLocation" positionX="-63" positionY="-18" width="128" height="119"/>

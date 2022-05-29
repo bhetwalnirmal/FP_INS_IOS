@@ -18,6 +18,7 @@ class CoreDataController{
         let managedContext =
             appDelegate.persistentContainer.viewContext
         
+        
           let entity =
             NSEntityDescription.entity(forEntityName: "DataLocation",
                                        in: managedContext)!

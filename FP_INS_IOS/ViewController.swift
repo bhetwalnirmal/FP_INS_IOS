@@ -10,7 +10,6 @@ import CoreData
 class ViewController: UIViewController {
     var floatingActionButton: UIButton!
     let coreDataController = CoreDataController()
-    let locations: [Location] = [Location]()
     @IBOutlet weak var searchBar: UISearchBar!
     var clickedLocation:Location?
     
@@ -18,7 +17,13 @@ class ViewController: UIViewController {
     var filteredLocations: [Location] = [Location]()
     
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
+        let locationData = coreDataController.getAllLocations()
+        locations = convertToLocation(nsManagedObject: locationData)
+        filteredLocations = locations
+        locationCollectionView.reloadData()
     }
+    
+    var locations: [Location] = []
     
     
     func convertToLocation(nsManagedObject: [NSManagedObject]) -> [Location]{
@@ -30,13 +35,6 @@ class ViewController: UIViewController {
             let valLocationDescription = entry.value(forKey: "locationDescription")
             let valLocationImages = entry.value(forKey: "locationImages")
             let valLocationVideo = entry.value(forKey: "locationVideo")
-            
-            print("locationTitle", valLocationTitle)
-            print("locationLat", valLocationLat)
-            print("locationLong", valLocationLong)
-            print("locationDescription", valLocationDescription)
-            print("locationImages", valLocationImages)
-            print("locationVideo", valLocationVideo)
             
             if(valLocationTitle != nil &&
                valLocationLat != nil &&
@@ -56,7 +54,7 @@ class ViewController: UIViewController {
             //self.locationsTemp.append(contentsOf: entry)
 
         }
-        return locations
+        return locationsTemp
 
     }
     override func viewDidLoad() {
@@ -68,8 +66,8 @@ class ViewController: UIViewController {
         // get data from core data
         let locationData = coreDataController.getAllLocations()
         
-        
-        let locations = convertToLocation(nsManagedObject: locationData)
+
+        locations = convertToLocation(nsManagedObject: locationData)
         filteredLocations = locations 
         // setting viewlaylout of location collection view
         locationCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
@@ -83,6 +81,18 @@ class ViewController: UIViewController {
         searchBar.delegate = self
         self.definesPresentationContext = false
     }
+   
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("*********** Running view will appear")
+        let locationData = coreDataController.getAllLocations()
+        locations = convertToLocation(nsManagedObject: locationData)
+        filteredLocations = locations
+        print(filteredLocations.count)
+        // setting data source and delegate of location collection view
+        locationCollectionView.reloadData()
+    }
+   
 
     @objc func addDataFloatingActionButton (_ sender: UIButton) {
         performSegue(withIdentifier: "navigateToLocationAdd", sender: self)
