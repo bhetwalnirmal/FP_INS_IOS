@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		348C8E592835B47700D15D26 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C8E582835B47700D15D26 /* Location.swift */; };
 		348C8E5B2835B97700D15D26 /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C8E5A2835B97700D15D26 /* LocationCollectionViewCell.swift */; };
-		47EABC1F2841A25F0004F3EC /* AddLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47EABC1E2841A25F0004F3EC /* AddLocation.storyboard */; };
+		47922ACB2842F56100F21177 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47922ACA2842F56100F21177 /* CoreDataController.swift */; };
 		47EABC212841A6580004F3EC /* LocationAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EABC202841A6580004F3EC /* LocationAddViewController.swift */; };
 		47EABC232841BCA40004F3EC /* LocationScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EABC222841BCA40004F3EC /* LocationScreenViewController.swift */; };
 		47EABC252841BCC80004F3EC /* PageSliderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EABC242841BCC80004F3EC /* PageSliderCollectionViewCell.swift */; };
@@ -45,7 +45,7 @@
 /* Begin PBXFileReference section */
 		348C8E582835B47700D15D26 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		348C8E5A2835B97700D15D26 /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
-		47EABC1E2841A25F0004F3EC /* AddLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddLocation.storyboard; sourceTree = "<group>"; };
+		47922ACA2842F56100F21177 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		47EABC202841A6580004F3EC /* LocationAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAddViewController.swift; sourceTree = "<group>"; };
 		47EABC222841BCA40004F3EC /* LocationScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationScreenViewController.swift; path = ../../../Advanced_IOS/Final_Project/FP_INS_IOS/FP_INS_IOS/LocationScreenViewController.swift; sourceTree = "<group>"; };
 		47EABC242841BCC80004F3EC /* PageSliderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageSliderCollectionViewCell.swift; path = ../../../Advanced_IOS/Final_Project/FP_INS_IOS/FP_INS_IOS/PageSliderCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -117,7 +117,6 @@
 				847FFAD028345A13007534E2 /* SceneDelegate.swift */,
 				847FFAD228345A13007534E2 /* ViewController.swift */,
 				847FFAD428345A13007534E2 /* Main.storyboard */,
-				47EABC1E2841A25F0004F3EC /* AddLocation.storyboard */,
 				847FFADA28345A16007534E2 /* Assets.xcassets */,
 				847FFADC28345A16007534E2 /* LaunchScreen.storyboard */,
 				847FFADF28345A16007534E2 /* Info.plist */,
@@ -127,6 +126,7 @@
 				47EABC222841BCA40004F3EC /* LocationScreenViewController.swift */,
 				47EABC202841A6580004F3EC /* LocationAddViewController.swift */,
 				47EABC242841BCC80004F3EC /* PageSliderCollectionViewCell.swift */,
+				47922ACA2842F56100F21177 /* CoreDataController.swift */,
 			);
 			path = FP_INS_IOS;
 			sourceTree = "<group>";
@@ -255,7 +255,6 @@
 				847FFADE28345A16007534E2 /* LaunchScreen.storyboard in Resources */,
 				847FFADB28345A16007534E2 /* Assets.xcassets in Resources */,
 				847FFAD628345A13007534E2 /* Main.storyboard in Resources */,
-				47EABC1F2841A25F0004F3EC /* AddLocation.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +281,7 @@
 			files = (
 				847FFAD928345A13007534E2 /* FP_INS_IOS.xcdatamodeld in Sources */,
 				47EABC232841BCA40004F3EC /* LocationScreenViewController.swift in Sources */,
+				47922ACB2842F56100F21177 /* CoreDataController.swift in Sources */,
 				47EABC212841A6580004F3EC /* LocationAddViewController.swift in Sources */,
 				847FFAD328345A13007534E2 /* ViewController.swift in Sources */,
 				348C8E5B2835B97700D15D26 /* LocationCollectionViewCell.swift in Sources */,
