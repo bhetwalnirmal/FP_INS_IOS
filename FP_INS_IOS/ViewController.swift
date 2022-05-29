@@ -6,10 +6,10 @@
 //
 
 import UIKit
-
+import CoreData
 class ViewController: UIViewController {
     var floatingActionButton: UIButton!
-    
+    let coreDataController = CoreDataController()
     @IBOutlet weak var searchBar: UISearchBar!
     var clickedLocation:Location?
     
@@ -17,15 +17,58 @@ class ViewController: UIViewController {
     var filteredLocations: [Location] = [Location]()
     
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
+        let locationData = coreDataController.getAllLocations()
+        locations = convertToLocation(nsManagedObject: locationData)
+        filteredLocations = locations
+        locationCollectionView.reloadData()
     }
     
+    var locations: [Location] = []
+    
+    
+    func convertToLocation(nsManagedObject: [NSManagedObject]) -> [Location]{
+        var locationsTemp: [Location] = [Location]()
+        for entry in nsManagedObject{
+            let valLocationTitle = entry.value(forKey: "locationTitle")
+            let valLocationLat = entry.value(forKey: "locationLat")
+            let valLocationLong = entry.value(forKey: "locationLong")
+            let valLocationDescription = entry.value(forKey: "locationDescription")
+            let valLocationImages = entry.value(forKey: "locationImages")
+            let valLocationVideo = entry.value(forKey: "locationVideo")
+            
+            if(valLocationTitle != nil &&
+               valLocationLat != nil &&
+               valLocationLong != nil &&
+               valLocationDescription != nil &&
+               valLocationImages != nil &&
+               valLocationVideo != nil){
+                locationsTemp.append(
+                    Location(locationTitle: valLocationTitle as! String,
+                             locationLat: valLocationLat as! Double,
+                             locationLong: valLocationLong as! Double,
+                             locationDescription: valLocationDescription as! String,
+                             locationImages: valLocationImages as! [String],
+                             locationVideo: valLocationVideo as! String))
+            }
+            
+            //self.locationsTemp.append(contentsOf: entry)
+
+        }
+        return locationsTemp
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // setting data source and delegate of location collection view
         locationCollectionView.dataSource = self
         locationCollectionView.delegate = self
-        filteredLocations = locations
+        // get data from core data
+        let locationData = coreDataController.getAllLocations()
+        
+
+        locations = convertToLocation(nsManagedObject: locationData)
+        filteredLocations = locations 
         // setting viewlaylout of location collection view
         locationCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
         
@@ -38,9 +81,10 @@ class ViewController: UIViewController {
         searchBar.delegate = self
         self.definesPresentationContext = false
     }
+   
 
     @objc func addDataFloatingActionButton (_ sender: UIButton) {
-        
+        performSegue(withIdentifier: "navigateToLocationAdd", sender: self)
     }
     
     override func viewWillLayoutSubviews() {
@@ -71,8 +115,14 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let locationScreenViewController = segue.destination as! LocationScreenViewController
-        locationScreenViewController.location = self.clickedLocation
+        if(segue.identifier == "navigateToLocationScreen"){
+            let locationScreenViewController = segue.destination as! LocationScreenViewController
+            locationScreenViewController.location = self.clickedLocation
+        }
+        if(segue.identifier == "navigateToLocationAdd"){
+            let locationAddViewController = segue.destination as! LocationAddViewController
+        }
+        
     }
 }
 

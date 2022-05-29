@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3428AAB22841911D0018AC0A /* PageSliderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3428AAB12841911D0018AC0A /* PageSliderCollectionViewCell.swift */; };
 		348C8E592835B47700D15D26 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C8E582835B47700D15D26 /* Location.swift */; };
 		348C8E5B2835B97700D15D26 /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C8E5A2835B97700D15D26 /* LocationCollectionViewCell.swift */; };
-		348C8E5D2835EBFE00D15D26 /* LocationScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C8E5C2835EBFE00D15D26 /* LocationScreenViewController.swift */; };
+		47922ACB2842F56100F21177 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47922ACA2842F56100F21177 /* CoreDataController.swift */; };
+		47EABC212841A6580004F3EC /* LocationAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EABC202841A6580004F3EC /* LocationAddViewController.swift */; };
+		47EABC232841BCA40004F3EC /* LocationScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EABC222841BCA40004F3EC /* LocationScreenViewController.swift */; };
+		47EABC252841BCC80004F3EC /* PageSliderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EABC242841BCC80004F3EC /* PageSliderCollectionViewCell.swift */; };
 		847FFACF28345A13007534E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847FFACE28345A13007534E2 /* AppDelegate.swift */; };
 		847FFAD128345A13007534E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847FFAD028345A13007534E2 /* SceneDelegate.swift */; };
 		847FFAD328345A13007534E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847FFAD228345A13007534E2 /* ViewController.swift */; };
@@ -41,10 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3428AAB12841911D0018AC0A /* PageSliderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSliderCollectionViewCell.swift; sourceTree = "<group>"; };
 		348C8E582835B47700D15D26 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		348C8E5A2835B97700D15D26 /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
-		348C8E5C2835EBFE00D15D26 /* LocationScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationScreenViewController.swift; sourceTree = "<group>"; };
+		47922ACA2842F56100F21177 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		47EABC202841A6580004F3EC /* LocationAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAddViewController.swift; sourceTree = "<group>"; };
+		47EABC222841BCA40004F3EC /* LocationScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationScreenViewController.swift; path = ../../../Advanced_IOS/Final_Project/FP_INS_IOS/FP_INS_IOS/LocationScreenViewController.swift; sourceTree = "<group>"; };
+		47EABC242841BCC80004F3EC /* PageSliderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageSliderCollectionViewCell.swift; path = ../../../Advanced_IOS/Final_Project/FP_INS_IOS/FP_INS_IOS/PageSliderCollectionViewCell.swift; sourceTree = "<group>"; };
 		847FFACB28345A13007534E2 /* FP_INS_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FP_INS_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847FFACE28345A13007534E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		847FFAD028345A13007534E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,8 +123,10 @@
 				847FFAD728345A13007534E2 /* FP_INS_IOS.xcdatamodeld */,
 				348C8E582835B47700D15D26 /* Location.swift */,
 				348C8E5A2835B97700D15D26 /* LocationCollectionViewCell.swift */,
-				348C8E5C2835EBFE00D15D26 /* LocationScreenViewController.swift */,
-				3428AAB12841911D0018AC0A /* PageSliderCollectionViewCell.swift */,
+				47EABC222841BCA40004F3EC /* LocationScreenViewController.swift */,
+				47EABC202841A6580004F3EC /* LocationAddViewController.swift */,
+				47EABC242841BCC80004F3EC /* PageSliderCollectionViewCell.swift */,
+				47922ACA2842F56100F21177 /* CoreDataController.swift */,
 			);
 			path = FP_INS_IOS;
 			sourceTree = "<group>";
@@ -274,13 +280,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				847FFAD928345A13007534E2 /* FP_INS_IOS.xcdatamodeld in Sources */,
+				47EABC232841BCA40004F3EC /* LocationScreenViewController.swift in Sources */,
+				47922ACB2842F56100F21177 /* CoreDataController.swift in Sources */,
+				47EABC212841A6580004F3EC /* LocationAddViewController.swift in Sources */,
 				847FFAD328345A13007534E2 /* ViewController.swift in Sources */,
 				348C8E5B2835B97700D15D26 /* LocationCollectionViewCell.swift in Sources */,
-				3428AAB22841911D0018AC0A /* PageSliderCollectionViewCell.swift in Sources */,
 				348C8E592835B47700D15D26 /* Location.swift in Sources */,
 				847FFACF28345A13007534E2 /* AppDelegate.swift in Sources */,
-				348C8E5D2835EBFE00D15D26 /* LocationScreenViewController.swift in Sources */,
 				847FFAD128345A13007534E2 /* SceneDelegate.swift in Sources */,
+				47EABC252841BCC80004F3EC /* PageSliderCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
