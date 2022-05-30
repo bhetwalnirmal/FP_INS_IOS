@@ -59,7 +59,7 @@ class LocationScreenViewController: UIViewController, CLLocationManagerDelegate 
             pageSliderCollectionView.scrollToItem(at: IndexPath(item: currentCellIndex, section: 0), at: .right, animated: true)
         }
     
-    //MARK: - display user location method
+
         func displayLocation(latitude: CLLocationDegrees,
                              longitude: CLLocationDegrees,
                              title: String,
@@ -112,7 +112,7 @@ extension LocationScreenViewController: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = pageSliderCollectionView.dequeueReusableCell(withReuseIdentifier: "pageScrollCell", for: indexPath) as! PageSliderCollectionViewCell
-        cell.locationImage.image = UIImage(named: (location?.locationImages[indexPath.row])!)
+        cell.locationImage.image = location?.locationImages[indexPath.row]
         return cell
     }
     

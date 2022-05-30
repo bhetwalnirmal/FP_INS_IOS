@@ -22,6 +22,11 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
     @IBOutlet weak var txtCoOrdinate: UITextField!
     @IBOutlet weak var txtDescription: UITextView!
     @IBOutlet weak var lblSelectedVideo: UILabel!
+    
+    // values stored in images and videos
+    var valImageArr: [UIImage] = []
+    var valImageDataArr: [Data] = []
+    var valVideoPath: String = ""
     @IBAction func btnAddImage(_ sender: Any) {
         showImagePicker()
     }
@@ -55,6 +60,8 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
         self.lblSelectedVideo.text = fileName + " was added"
     }
     
+    
+    
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         dismiss(animated: true, completion: nil)
             guard !results.isEmpty else { return }
@@ -67,6 +74,7 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
                      DispatchQueue.main.async {
                          if let image = image as? UIImage {
                              imageViews[index]!.image = image
+                             self.valImageArr.append(image)
                          }
                      }
                 }
@@ -92,7 +100,6 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
                             //self.parent.videoURL = newUrl.absoluteString
                         }
             
-            
         }
         
     }
@@ -108,7 +115,7 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
         
         // TODO: Run Some validations here
         let locationObj: Location = Location(
-            locationTitle: valLocationTitle, locationLat: valLocationLat, locationLong: valLocationLong, locationDescription: valLocationDescription, locationImages: ["everest.jpg", "everest.jpg"], locationVideo: ""
+            locationTitle: valLocationTitle, locationLat: valLocationLat, locationLong: valLocationLong, locationDescription: valLocationDescription, locationImages: self.valImageArr, locationVideo: ""
         )
         
         coreDataController.addNewLocation(locationData: locationObj)

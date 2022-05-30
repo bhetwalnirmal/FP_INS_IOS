@@ -14,7 +14,7 @@ class LocationCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var locationTitleLabel: UILabel!
     
     func setup(with location: Location) {
-        locationImageView.image = UIImage(named: location.locationImages[0])
+        locationImageView.image = location.locationImages[0]
         locationTitleLabel.text = location.locationTitle
     }
 }
