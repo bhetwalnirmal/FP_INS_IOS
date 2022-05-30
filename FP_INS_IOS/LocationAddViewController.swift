@@ -57,7 +57,7 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
     }
     
     private func updateVideoUploadFile(fileName: String){
-        self.lblSelectedVideo.text = fileName + " was added"
+        self.lblSelectedVideo.text = "✅" + fileName + " was added"
     }
     
     
@@ -79,6 +79,26 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
                      }
                 }
              }
+            
+//            NSString *tempPath = [documentsDirectory stringByAppendingPathComponent: [NSString stringWithFormat:@"vid%d%@%@.mp4", random, self.currentAthlete.first, self.currentAthlete.last]];
+
+//            provider.loadFileRepresentation(forTypeIdentifier: UTType.movie.identifier) { url, error in
+//                               guard error == nil else{
+//                               print(error)
+//                               return
+//                            }
+//                            // receiving the video-local-URL / filepath
+//                            guard let url = url else {return}
+//                            // create a new filename
+//                            let fileName = "\(Int(Date().timeIntervalSince1970)).\(url.pathExtension)"
+//                            // create new URL
+//                            let newUrl = URL(fileURLWithPath: NSTemporaryDirectory() + fileName)
+//                            // copy item to APP Storage
+//                            try? FileManager.default.copyItem(at: url, to: newUrl)
+//                            self.videoSavedURL = newUrl.absoluteString
+//                        self.updateVideoUploadFile(fileName: self.videoSavedURL)
+//                        }
+            
             provider.loadFileRepresentation(forTypeIdentifier: "public.movie") { url, error in
                             guard error == nil else{
                                 print("error in video picker")
@@ -91,15 +111,15 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
                             }
                             // create a new filename
                             let fileName = "\(Int(Date().timeIntervalSince1970)).\(url.pathExtension)"
-                            self.updateVideoUploadFile(fileName:fileName)
                             // create new URL
                             let newUrl = URL(fileURLWithPath: NSTemporaryDirectory() + fileName)
                             // copy item to APP Storage
-                            self.videoSavedURL = newUrl.absoluteString
                             try? FileManager.default.copyItem(at: url, to: newUrl)
-                            //self.parent.videoURL = newUrl.absoluteString
+                            self.videoSavedURL = newUrl.absoluteString
+                            print("video added")
+                self.updateVideoUploadFile(fileName: self.videoSavedURL)
                         }
-            
+        
         }
         
     }
@@ -115,7 +135,7 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
         
         // TODO: Run Some validations here
         let locationObj: Location = Location(
-            locationTitle: valLocationTitle, locationLat: valLocationLat, locationLong: valLocationLong, locationDescription: valLocationDescription, locationImages: self.valImageArr, locationVideo: ""
+            locationTitle: valLocationTitle, locationLat: valLocationLat, locationLong: valLocationLong, locationDescription: valLocationDescription, locationImages: self.valImageArr, locationVideo: self.videoSavedURL
         )
         
         coreDataController.addNewLocation(locationData: locationObj)

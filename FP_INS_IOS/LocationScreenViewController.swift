@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import AVKit
 
 class LocationScreenViewController: UIViewController, CLLocationManagerDelegate {
     var locationData: Location? = nil
@@ -21,6 +22,7 @@ class LocationScreenViewController: UIViewController, CLLocationManagerDelegate 
     
     @IBOutlet weak var locationImagesPageController: UIPageControl!
     
+
     
     var location:Location?
     
@@ -46,6 +48,22 @@ class LocationScreenViewController: UIViewController, CLLocationManagerDelegate 
         
         
     }
+    @IBAction func btnPlayVideo(_ sender: Any) {
+        if(location?.locationVideo != nil){
+            guard let path = Bundle.main.path(forResource: location?.locationVideo, ofType: "mp4") else {
+                debugPrint(location?.locationVideo)
+                debugPrint("video not found")
+                return
+            }
+            let player = AVPlayer(url: URL(fileURLWithPath: path))
+            let playerController = AVPlayerViewController()
+            playerController.player = player
+            present(playerController, animated: true) {
+                player.play()
+            }
+        }
+        
+    }
     
         @objc func slideToNextImage(){
             if currentCellIndex < (location?.locationImages.count)!-1{
@@ -59,6 +77,7 @@ class LocationScreenViewController: UIViewController, CLLocationManagerDelegate 
             pageSliderCollectionView.scrollToItem(at: IndexPath(item: currentCellIndex, section: 0), at: .right, animated: true)
         }
     
+   
 
         func displayLocation(latitude: CLLocationDegrees,
                              longitude: CLLocationDegrees,
@@ -85,17 +104,6 @@ class LocationScreenViewController: UIViewController, CLLocationManagerDelegate 
             locationMapView.addAnnotation(annotation)
         }
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     @IBAction func goToHomeScreen(_ sender: Any) {
         performSegue(withIdentifier: "unwindToHome", sender: self)
