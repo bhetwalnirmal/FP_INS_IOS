@@ -19,9 +19,11 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
     @IBOutlet weak var img2: UIImageView!
     @IBOutlet weak var img3: UIImageView!
     @IBOutlet weak var txtLocationName: UITextField!
-    @IBOutlet weak var txtCoOrdinate: UITextField!
+    @IBOutlet weak var txtLatitude: UITextField!
     @IBOutlet weak var txtDescription: UITextView!
     @IBOutlet weak var lblSelectedVideo: UILabel!
+    
+    @IBOutlet weak var txtLongitude: UITextField!
     
     // values stored in images and videos
     var valImageArr: [UIImage] = []
@@ -114,8 +116,8 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
     @IBAction func btnSave(_ sender: Any) {
         //extract data from fields
         let valLocationTitle: String = txtLocationName.text!
-        let valLocationLat: Double = Double(txtCoOrdinate.text!)!
-        let valLocationLong: Double = Double(txtCoOrdinate.text!)!
+        let valLocationLat: Double = Double(txtLatitude.text!)!
+        let valLocationLong: Double = Double(txtLongitude.text!)!
         let valLocationDescription: String = txtDescription.text!
         
         
