@@ -22,6 +22,11 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
     @IBOutlet weak var txtCoOrdinate: UITextField!
     @IBOutlet weak var txtDescription: UITextView!
     @IBOutlet weak var lblSelectedVideo: UILabel!
+    
+    // values stored in images and videos
+    var valImageArr: [UIImage] = []
+    var valImageDataArr: [Data] = []
+    var valVideoPath: String = ""
     @IBAction func btnAddImage(_ sender: Any) {
         showImagePicker()
     }
@@ -52,8 +57,10 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
     }
     
     private func updateVideoUploadFile(fileName: String){
-        self.lblSelectedVideo.text = fileName + " was added"
+        self.lblSelectedVideo.text = "✅" + fileName + " was added"
     }
+    
+    
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         dismiss(animated: true, completion: nil)
@@ -67,10 +74,12 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
                      DispatchQueue.main.async {
                          if let image = image as? UIImage {
                              imageViews[index]!.image = image
+                             self.valImageArr.append(image)
                          }
                      }
                 }
              }
+            
             provider.loadFileRepresentation(forTypeIdentifier: "public.movie") { url, error in
                             guard error == nil else{
                                 print("error in video picker")
@@ -81,18 +90,22 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
                                 print("error 2 in video picker")
                                 return
                             }
+                            let myVideoData = NSData(contentsOf: url)!
                             // create a new filename
                             let fileName = "\(Int(Date().timeIntervalSince1970)).\(url.pathExtension)"
-                            self.updateVideoUploadFile(fileName:fileName)
-                            // create new URL
-                            let newUrl = URL(fileURLWithPath: NSTemporaryDirectory() + fileName)
-                            // copy item to APP Storage
-                            self.videoSavedURL = newUrl.absoluteString
-                            try? FileManager.default.copyItem(at: url, to: newUrl)
-                            //self.parent.videoURL = newUrl.absoluteString
+                            
+                            //Here we are writing the data to the Document Directory for use later on.
+                            let docPaths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
+                            let documentsDirectory: AnyObject = docPaths[0] as AnyObject
+                            let docDataPath = documentsDirectory.appendingPathComponent(fileName) as String
+                
+                            try? myVideoData.write(to: URL(fileURLWithPath: docDataPath), options: [])
+                
+                            self.videoSavedURL = fileName
+                            print("video added")
+                self.updateVideoUploadFile(fileName: self.videoSavedURL)
                         }
-            
-            
+
         }
         
     }
@@ -108,7 +121,7 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
         
         // TODO: Run Some validations here
         let locationObj: Location = Location(
-            locationTitle: valLocationTitle, locationLat: valLocationLat, locationLong: valLocationLong, locationDescription: valLocationDescription, locationImages: ["everest.jpg", "everest.jpg"], locationVideo: ""
+            locationTitle: valLocationTitle, locationLat: valLocationLat, locationLong: valLocationLong, locationDescription: valLocationDescription, locationImages: self.valImageArr, locationVideo: self.videoSavedURL
         )
         
         coreDataController.addNewLocation(locationData: locationObj)

@@ -14,7 +14,7 @@ struct Location {
     let locationLat: Double
     let locationLong: Double
     let locationDescription: String
-    let locationImages: [String]
+    let locationImages: [UIImage]
     
     // todo: We might need to change the datatype of video once we see how we gonna store and handle video file
     let locationVideo: String

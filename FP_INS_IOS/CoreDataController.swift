@@ -10,6 +10,18 @@ import CoreData
 
 class CoreDataController{
     var locations: [NSManagedObject] = []
+    
+    
+    func convertImageToData(imagesArr: [UIImage]) -> [Data]{
+        var imagesDataArr: [Data] = [Data]()
+        imagesArr.forEach({
+            (image) in
+            imagesDataArr.append(image.jpegData(compressionQuality: 1)!) //or use myImagesDataArry.append(image.pngData())
+      })
+      return imagesDataArr
+    }
+    
+    
     func addNewLocation(locationData: Location){
         guard let appDelegate =
            UIApplication.shared.delegate as? AppDelegate else {
@@ -31,7 +43,7 @@ class CoreDataController{
         location.setValue(locationData.locationLat, forKeyPath: "locationLat")
         location.setValue(locationData.locationLong, forKeyPath: "locationLong")
         location.setValue(locationData.locationDescription, forKeyPath: "locationDescription")
-        location.setValue(locationData.locationImages, forKeyPath: "locationImages")
+        location.setValue(convertImageToData(imagesArr: locationData.locationImages), forKeyPath: "locationImages")
         location.setValue(locationData.locationVideo, forKeyPath: "locationVideo")
           
          

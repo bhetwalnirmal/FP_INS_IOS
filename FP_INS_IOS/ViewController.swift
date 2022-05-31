@@ -25,6 +25,14 @@ class ViewController: UIViewController {
     
     var locations: [Location] = []
     
+    func convertDataToImages(imageDataArray: [Data]) -> [UIImage] {
+        var myImagesArray: [UIImage] = [UIImage]()
+      imageDataArray.forEach { (imageData) in
+          myImagesArray.append(UIImage(data: imageData)!)
+      }
+      return myImagesArray
+    }
+    
     
     func convertToLocation(nsManagedObject: [NSManagedObject]) -> [Location]{
         var locationsTemp: [Location] = [Location]()
@@ -47,7 +55,7 @@ class ViewController: UIViewController {
                              locationLat: valLocationLat as! Double,
                              locationLong: valLocationLong as! Double,
                              locationDescription: valLocationDescription as! String,
-                             locationImages: valLocationImages as! [String],
+                             locationImages: convertDataToImages(imageDataArray: valLocationImages as! [Data]),
                              locationVideo: valLocationVideo as! String))
             }
             
