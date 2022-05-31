@@ -88,6 +88,7 @@ class ViewController: UIViewController {
         self.view.addSubview(self.floatingActionButton)
         searchBar.delegate = self
         self.definesPresentationContext = false
+        
     }
    
 
@@ -128,7 +129,7 @@ class ViewController: UIViewController {
             locationScreenViewController.location = self.clickedLocation
         }
         if(segue.identifier == "navigateToLocationAdd"){
-            let locationAddViewController = segue.destination as! LocationAddViewController
+            _ = segue.destination as! LocationAddViewController
         }
         
     }
@@ -156,7 +157,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // setting clicked location
-        clickedLocation = locations[indexPath.row]
+        clickedLocation = location[indexPath.row]
         navigateToLocationScreen();
     }
 }
