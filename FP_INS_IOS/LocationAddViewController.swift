@@ -80,25 +80,6 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
                 }
              }
             
-//            NSString *tempPath = [documentsDirectory stringByAppendingPathComponent: [NSString stringWithFormat:@"vid%d%@%@.mp4", random, self.currentAthlete.first, self.currentAthlete.last]];
-
-//            provider.loadFileRepresentation(forTypeIdentifier: UTType.movie.identifier) { url, error in
-//                               guard error == nil else{
-//                               print(error)
-//                               return
-//                            }
-//                            // receiving the video-local-URL / filepath
-//                            guard let url = url else {return}
-//                            // create a new filename
-//                            let fileName = "\(Int(Date().timeIntervalSince1970)).\(url.pathExtension)"
-//                            // create new URL
-//                            let newUrl = URL(fileURLWithPath: NSTemporaryDirectory() + fileName)
-//                            // copy item to APP Storage
-//                            try? FileManager.default.copyItem(at: url, to: newUrl)
-//                            self.videoSavedURL = newUrl.absoluteString
-//                        self.updateVideoUploadFile(fileName: self.videoSavedURL)
-//                        }
-            
             provider.loadFileRepresentation(forTypeIdentifier: "public.movie") { url, error in
                             guard error == nil else{
                                 print("error in video picker")
@@ -109,17 +90,22 @@ class LocationAddViewController: UIViewController, PHPickerViewControllerDelegat
                                 print("error 2 in video picker")
                                 return
                             }
+                            let myVideoData = NSData(contentsOf: url)!
                             // create a new filename
                             let fileName = "\(Int(Date().timeIntervalSince1970)).\(url.pathExtension)"
-                            // create new URL
-                            let newUrl = URL(fileURLWithPath: NSTemporaryDirectory() + fileName)
-                            // copy item to APP Storage
-                            try? FileManager.default.copyItem(at: url, to: newUrl)
-                            self.videoSavedURL = newUrl.absoluteString
+                            
+                            //Here we are writing the data to the Document Directory for use later on.
+                            let docPaths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
+                            let documentsDirectory: AnyObject = docPaths[0] as AnyObject
+                            let docDataPath = documentsDirectory.appendingPathComponent(fileName) as String
+                
+                            try? myVideoData.write(to: URL(fileURLWithPath: docDataPath), options: [])
+                
+                            self.videoSavedURL = fileName
                             print("video added")
                 self.updateVideoUploadFile(fileName: self.videoSavedURL)
                         }
-        
+
         }
         
     }

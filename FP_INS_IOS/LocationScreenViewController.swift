@@ -50,12 +50,10 @@ class LocationScreenViewController: UIViewController, CLLocationManagerDelegate 
     }
     @IBAction func btnPlayVideo(_ sender: Any) {
         if(location?.locationVideo != nil){
-            guard let path = Bundle.main.path(forResource: location?.locationVideo, ofType: "mp4") else {
-                debugPrint(location?.locationVideo)
-                debugPrint("video not found")
-                return
-            }
-            let player = AVPlayer(url: URL(fileURLWithPath: path))
+            let fm = FileManager.default
+            let docsurl = try! fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let myurl = docsurl.appendingPathComponent(location!.locationVideo)
+            let player = AVPlayer(url: myurl)
             let playerController = AVPlayerViewController()
             playerController.player = player
             present(playerController, animated: true) {
