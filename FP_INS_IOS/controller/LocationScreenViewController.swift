@@ -37,12 +37,11 @@ class LocationScreenViewController: UIViewController, CLLocationManagerDelegate 
         pageSliderCollectionView.delegate = self
         
         locationTitle.text = location?.locationTitle
-//        locationImage.image = UIImage(named: (location?.locationImages[0])!)
         locationDesc.text = location?.locationDescription
         
         displayLocation(latitude: location!.locationLat, longitude: location!.locationLong, title: location!.locationTitle, subtitle: "Here")
         
-        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(slideToNextImage), userInfo: nil, repeats: true)
+        //timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(slideToNextImage), userInfo: nil, repeats: true)
         
         locationImagesPageController.numberOfPages = (location?.locationImages.count)!;
         
@@ -71,7 +70,6 @@ class LocationScreenViewController: UIViewController, CLLocationManagerDelegate 
             }
             
             locationImagesPageController.currentPage = currentCellIndex;
-            
             pageSliderCollectionView.scrollToItem(at: IndexPath(item: currentCellIndex, section: 0), at: .right, animated: true)
         }
     

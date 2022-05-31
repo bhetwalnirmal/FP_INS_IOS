@@ -90,6 +90,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34C2AA3C2845A0DE00B5A30B /* model */ = {
+			isa = PBXGroup;
+			children = (
+				348C8E582835B47700D15D26 /* Location.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		34C2AA402845A19A00B5A30B /* view */ = {
+			isa = PBXGroup;
+			children = (
+				348C8E5A2835B97700D15D26 /* LocationCollectionViewCell.swift */,
+				847FFADC28345A16007534E2 /* LaunchScreen.storyboard */,
+				47922ACD284449D800F21177 /* PageSliderCollectionViewCell.swift */,
+				847FFAD428345A13007534E2 /* Main.storyboard */,
+			);
+			name = view;
+			path = model/view;
+			sourceTree = "<group>";
+		};
+		34C2AA412845A1A800B5A30B /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				47922ACA2842F56100F21177 /* CoreDataController.swift */,
+				47EABC202841A6580004F3EC /* LocationAddViewController.swift */,
+				847FFAD228345A13007534E2 /* ViewController.swift */,
+				47922ACC284449D800F21177 /* LocationScreenViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		34C2AA422845A1B200B5A30B /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				847FFAD028345A13007534E2 /* SceneDelegate.swift */,
+				847FFACE28345A13007534E2 /* AppDelegate.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		34C2AA442845A1E900B5A30B /* res */ = {
+			isa = PBXGroup;
+			children = (
+				847FFADA28345A16007534E2 /* Assets.xcassets */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
 		847FFAC228345A12007534E2 = {
 			isa = PBXGroup;
 			children = (
@@ -113,20 +161,13 @@
 		847FFACD28345A13007534E2 /* FP_INS_IOS */ = {
 			isa = PBXGroup;
 			children = (
-				47922ACD284449D800F21177 /* PageSliderCollectionViewCell.swift */,
-				47922ACC284449D800F21177 /* LocationScreenViewController.swift */,
-				847FFACE28345A13007534E2 /* AppDelegate.swift */,
-				847FFAD028345A13007534E2 /* SceneDelegate.swift */,
-				847FFAD228345A13007534E2 /* ViewController.swift */,
-				847FFAD428345A13007534E2 /* Main.storyboard */,
-				847FFADA28345A16007534E2 /* Assets.xcassets */,
-				847FFADC28345A16007534E2 /* LaunchScreen.storyboard */,
+				34C2AA442845A1E900B5A30B /* res */,
+				34C2AA422845A1B200B5A30B /* utils */,
+				34C2AA412845A1A800B5A30B /* controller */,
+				34C2AA402845A19A00B5A30B /* view */,
+				34C2AA3C2845A0DE00B5A30B /* model */,
 				847FFADF28345A16007534E2 /* Info.plist */,
 				847FFAD728345A13007534E2 /* FP_INS_IOS.xcdatamodeld */,
-				348C8E582835B47700D15D26 /* Location.swift */,
-				348C8E5A2835B97700D15D26 /* LocationCollectionViewCell.swift */,
-				47EABC202841A6580004F3EC /* LocationAddViewController.swift */,
-				47922ACA2842F56100F21177 /* CoreDataController.swift */,
 			);
 			path = FP_INS_IOS;
 			sourceTree = "<group>";
