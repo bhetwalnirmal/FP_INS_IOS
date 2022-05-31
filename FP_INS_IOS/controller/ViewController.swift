@@ -157,7 +157,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // setting clicked location
-        clickedLocation = location[indexPath.row]
+        clickedLocation = filteredLocations[indexPath.row]
         navigateToLocationScreen();
     }
 }
